@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ModuleAutoComText</string>
+    <string name="search_id">Search By Id:</string>
+</resources>

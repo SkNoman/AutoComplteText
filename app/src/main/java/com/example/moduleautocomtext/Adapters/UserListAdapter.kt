@@ -35,10 +35,7 @@ class UserListAdapter(context: Context, @LayoutRes private val layoutResource: I
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: TextView = convertView as TextView? ?: LayoutInflater.from(context)
             .inflate(layoutResource, parent, false) as TextView
-//        val deleteBtn = view.findViewById<Button>(R.id.btn_Delete)
-//        deleteBtn.setOnClickListener(View.OnClickListener {
-//
-//        })
+
         view.text = "${mEmps[position].login}  (${mEmps[position].id})"
         return view
     }

@@ -5,12 +5,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.TextView
+import android.widget.*
 import androidx.annotation.LayoutRes
 import com.example.moduleautocomtext.Model.UserModel
+import com.example.moduleautocomtext.R
 
 import java.util.*
 
@@ -28,6 +26,7 @@ class UserListAdapter(context: Context, @LayoutRes private val layoutResource: I
 
     }
 
+
     /* override fun getItemId(p0: Int): Long {
 
          return mEmps.get(p0).id.toLong()
@@ -36,6 +35,10 @@ class UserListAdapter(context: Context, @LayoutRes private val layoutResource: I
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: TextView = convertView as TextView? ?: LayoutInflater.from(context)
             .inflate(layoutResource, parent, false) as TextView
+//        val deleteBtn = view.findViewById<Button>(R.id.btn_Delete)
+//        deleteBtn.setOnClickListener(View.OnClickListener {
+//
+//        })
         view.text = "${mEmps[position].login}  (${mEmps[position].id})"
         return view
     }

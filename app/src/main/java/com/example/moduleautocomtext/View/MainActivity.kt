@@ -18,12 +18,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var recyclerAdapter: UserListAdapter
-    //var list:Array<String> = arrayOf("Samiul","Zahid","Nayona","Rakib","Mithun","Firoz")
     lateinit var autoTextView:AutoCompleteTextView
+    lateinit var listView: ListView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         autoTextView = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView);
+        listView = findViewById<ListView>(R.id.listView_Emp)
         initRecyclerView()
         initViewModel()
     }
@@ -40,10 +41,15 @@ class MainActivity : AppCompatActivity() {
                 val adapter = UserListAdapter(this, android.R.layout.simple_list_item_1, userList)
                 autoCompleteTextView.setAdapter(adapter)
                 autoCompleteTextView.threshold = 1
+                val newlist = mutableListOf<String>()
+
 
                 autoCompleteTextView.setOnItemClickListener() { parent, _, position, id ->
                     val selectedEmp = parent.adapter.getItem(position) as UserModel?
                     autoCompleteTextView.setText(selectedEmp?.login)
+                    selectedEmp?.login?.let { newlist.add(it) }
+                    val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,newlist)
+                    listView.setAdapter(adapter)
                 }
 
             } else {
